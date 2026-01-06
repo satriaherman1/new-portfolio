@@ -153,8 +153,8 @@ export async function* getChatResponseStream(message: string): AsyncGenerator<st
 
     let fullText = "";
 
-    // ⚠️ IMPORTANT: use result.stream
-    for await (const chunk of result.stream) {
+    // ⚠️ IMPORTANT: result IS the stream (AsyncGenerator)
+    for await (const chunk of result) {
       const text = chunk.text;
       if (text) {
         fullText += text;
