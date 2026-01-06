@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { profile } from "../data/profile";
+
 import { FiMenu, FiX } from "react-icons/fi";
 
 const navLinks = [
