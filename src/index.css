@@ -53,7 +53,7 @@ body {
   color: white;
 }
 
-a {
+.prose a {
   text-decoration: underline;
   color: #669aee;
 }
