@@ -1,4 +1,4 @@
-import { Experience } from "../data/experience";
+import { type Experience } from "../data/experience";
 
 interface TimelineItemProps {
     experience: Experience;
