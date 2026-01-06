@@ -40,7 +40,7 @@ export default function Navbar() {
                         href="#"
                         className="text-lg font-bold text-neutral-900 dark:text-white"
                     >
-                        {profile.name.split(" ")[0]}
+                        Satria
                         <span className="text-blue-600">.</span>
                     </a>
 
