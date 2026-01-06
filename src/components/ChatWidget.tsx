@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from "react";
+import ReactMarkdown from "react-markdown";
 import { getChatResponse } from "../utils/gemini";
 import { FiMessageSquare, FiX, FiSend, FiMinimize2 } from "react-icons/fi";
 import { AnimatePresence, motion } from "motion/react";
 import Avatar from "./avatar";
-
 
 interface Message {
     id: string;
@@ -19,7 +19,7 @@ export default function ChatWidget() {
     const [messages, setMessages] = useState<Message[]>([
         {
             id: "welcome",
-            text: "Hi there! I'm Satria's AI assistant. Ask me anything about his projects, skills, or experience.",
+            text: "Hi there! I'm Antonio AI. Ask me anything about his projects, skills, or experience.",
             sender: "ai",
             timestamp: new Date(),
         },
@@ -135,12 +135,19 @@ export default function ChatWidget() {
                                     className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}
                                 >
                                     <div
-                                        className={`max-w-[80%] p-3 rounded-2xl text-sm leading-relaxed ${msg.sender === "user"
+                                        className={`max-w-[80%] p-3 rounded-2xl text-sm leading-relaxed overflow-hidden ${msg.sender === "user"
                                             ? "bg-blue-600 text-white rounded-br-none"
                                             : "bg-white dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-700 rounded-bl-none shadow-sm"
                                             }`}
                                     >
-                                        {msg.text}
+                                        <div
+                                            className={`prose prose-sm max-w-none ${msg.sender === "user"
+                                                ? "prose-invert"
+                                                : "dark:prose-invert"
+                                                }`}
+                                        >
+                                            <ReactMarkdown>{msg.text}</ReactMarkdown>
+                                        </div>
                                     </div>
                                 </div>
                             ))}
