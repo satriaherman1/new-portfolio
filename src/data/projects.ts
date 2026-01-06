@@ -6,6 +6,7 @@ export interface Project {
   techStack: string[];
   impact: string;
   category: string;
+  imageUrl: string;
 }
 
 export const projects: Project[] = [
@@ -20,6 +21,7 @@ export const projects: Project[] = [
     impact:
       "Reduced data entry errors by 80% and decreased report generation time from days to minutes. Now serving 200+ daily active users.",
     category: "Enterprise System",
+    imageUrl: "/images/erp.png",
   },
   {
     id: "proj-2",
@@ -32,6 +34,7 @@ export const projects: Project[] = [
     impact:
       "Approval cycle time reduced from 2 weeks to 3 days. Achieved 100% audit compliance with full request traceability.",
     category: "Workflow Automation",
+    imageUrl: "/images/budget.png",
   },
   {
     id: "proj-3",
@@ -44,6 +47,7 @@ export const projects: Project[] = [
     impact:
       "Eliminated 10+ hours of weekly manual reporting. Enabled data-driven decisions with real-time metrics visibility.",
     category: "Business Intelligence",
+    imageUrl: "/images/operations.png",
   },
   {
     id: "proj-4",
@@ -56,5 +60,6 @@ export const projects: Project[] = [
     impact:
       "Document retrieval time reduced from hours to seconds. Achieved compliance with document retention policies.",
     category: "Content Management",
+    imageUrl: "/images/document.png",
   },
 ];

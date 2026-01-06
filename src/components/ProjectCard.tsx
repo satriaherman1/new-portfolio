@@ -13,13 +13,14 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             className="group relative bg-white dark:bg-neutral-800 rounded-2xl overflow-hidden border border-neutral-100 dark:border-neutral-700 hover:shadow-xl transition-all duration-300 h-full flex flex-col"
             style={{ animationDelay: `${index * 100}ms` }}
         >
-            {/* Simple colored header or image placeholder since we don't have project images yet */}
+            {/* Project Image */}
             <div className="h-48 bg-neutral-100 dark:bg-neutral-700 w-full relative overflow-hidden group-hover:scale-105 transition-transform duration-500">
-                <div className="absolute inset-0 bg-gradient-to-br from-neutral-200 to-neutral-300 dark:from-neutral-700 dark:to-neutral-600 opacity-50"></div>
-                {/* You would put an actual <img> here */}
-                <div className="absolute inset-0 flex items-center justify-center text-neutral-400 dark:text-neutral-500">
-                    <span className="text-4xl font-light opacity-50">Project Preview</span>
-                </div>
+                <img
+                    src={project.imageUrl}
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
 
             <div className="p-6 flex flex-col flex-grow">
