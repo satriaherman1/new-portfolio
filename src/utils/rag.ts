@@ -27,7 +27,7 @@ knowledgeBase.push({
   id: "profile-main",
   type: "profile",
   title: `${profile.name} - ${profile.role}`,
-  content: `${profile.tagline}\n${aboutContent.paragraphs.join("\n")}\nHighlights: ${aboutContent.highlights.join(", ")}`,
+  content: `${profile.tagline}\nEmail: ${profile.email}\nLinkedIn: ${profile.linkedin}\nGitHub: ${profile.github}\n\n${aboutContent.paragraphs.join("\n")}\nHighlights: ${aboutContent.highlights.join(", ")}`,
   tags: ["about", "profile", "contact", "email", "linkedin", "github", "bio"],
 });
 
@@ -93,6 +93,7 @@ export function searchData(query: string, limit = 5): string {
   const boostExperience = /work|working|company|job|role|career|employ|position|experience/.test(normalizedQuery);
   const boostProject = /project|build|create|develop|app|web|system/.test(normalizedQuery);
   const boostSkill = /skill|stack|tech|technology|language|framework/.test(normalizedQuery);
+  const boostContact = /contact|email|reach|message|social|linkedin|github/.test(normalizedQuery);
   
   const results = knowledgeBase.map((item) => {
     let score = 0;
@@ -113,6 +114,7 @@ export function searchData(query: string, limit = 5): string {
       if (boostExperience && item.type === "experience") score += 20;
       if (boostProject && item.type === "project") score += 10;
       if (boostSkill && item.type === "skill") score += 10;
+      if (boostContact && item.type === "profile") score += 30; // Very high priority
     }
 
     return { item, score };

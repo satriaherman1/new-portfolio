@@ -3,7 +3,8 @@ import { searchData } from "./src/utils/rag";
 const queries = [
   "Tell me about Power One",
   "What is your experience with React?",
-  "which company he's has been working"
+  "which company he's has been working",
+  "i want to contact him"
 ];
 
 console.log("--- RAG VERIFICATION ---\n");
