@@ -87,7 +87,13 @@ export function searchData(query: string, limit = 5): string {
   if (!query.trim()) return "";
 
   const queryTokens = tokenize(query);
+  const normalizedQuery = query.toLowerCase();
 
+  // Context Boosting
+  const boostExperience = /work|working|company|job|role|career|employ|position|experience/.test(normalizedQuery);
+  const boostProject = /project|build|create|develop|app|web|system/.test(normalizedQuery);
+  const boostSkill = /skill|stack|tech|technology|language|framework/.test(normalizedQuery);
+  
   const results = knowledgeBase.map((item) => {
     let score = 0;
 
@@ -101,6 +107,13 @@ export function searchData(query: string, limit = 5): string {
       if (tagTokens.includes(qt)) score += 5;    // Medium weight for tags
       if (contentTokens.includes(qt)) score += 1; // Low weight for content body
     });
+
+    // Apply Context Boosts
+    if (score > 0) {
+      if (boostExperience && item.type === "experience") score += 20;
+      if (boostProject && item.type === "project") score += 10;
+      if (boostSkill && item.type === "skill") score += 10;
+    }
 
     return { item, score };
   });
