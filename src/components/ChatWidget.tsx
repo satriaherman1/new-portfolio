@@ -2,8 +2,8 @@ import { useState, useRef, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import { getChatResponse } from "../utils/gemini";
 import { FiMessageSquare, FiX, FiSend, FiMinimize2 } from "react-icons/fi";
+import { FaRobot } from "react-icons/fa";
 import { AnimatePresence, motion } from "motion/react";
-import Avatar from "./avatar";
 
 interface Message {
     id: string;
@@ -100,11 +100,9 @@ export default function ChatWidget() {
                             <div className="flex items-center gap-3">
                                 <div className="relative">
                                     <div className="w-2 h-2 absolute bottom-0 right-0 bg-green-400 rounded-full border-2 border-blue-600"></div>
-                                    <Avatar
-                                        imageSrc="/me.jpeg"
-                                        altText="AI"
-                                        className="w-10 h-10 border-2 border-white/20"
-                                    />
+                                    <div className="w-10 h-10 rounded-full border-2 border-white/20 bg-white/10 flex items-center justify-center text-white backdrop-blur-sm">
+                                        <FaRobot size={22} />
+                                    </div>
                                 </div>
                                 <div>
                                     <h3 className="font-bold text-sm">Antonio AI</h3>
@@ -185,7 +183,7 @@ export default function ChatWidget() {
                                 </button>
                             </form>
                             <p className="text-[10px] text-center text-neutral-400 mt-2">
-                                Powered by Gemini AI • Responses may vary
+                                Antonio AI • Satria Herman
                             </p>
                         </div>
                     </motion.div>

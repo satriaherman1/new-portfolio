@@ -44,7 +44,13 @@ export default function Skills() {
             title="Skills & Technologies"
             subtitle="Technologies and tools I use to build scalable, maintainable systems."
             dark
+            className="relative overflow-hidden"
         >
+            {/* Dynamic Mesh Gradient Background */}
+            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-400/20 rounded-full mix-blend-multiply blur-[120px] opacity-30 animate-pulse -z-10"></div>
+            <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-400/20 rounded-full mix-blend-multiply blur-[100px] opacity-30 animate-pulse delay-1000 -z-10"></div>
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-pink-400/10 rounded-full mix-blend-multiply blur-[80px] opacity-20 -z-10"></div>
+
             <div
                 ref={gridRef}
                 className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"

@@ -5,6 +5,7 @@ export const profile = {
   email: "muhammadsatriaherman@gmail.com",
   linkedin: "https://linkedin.com/in/satriaherman",
   github: "https://github.com/satriaherman1",
+  devto: "https://dev.to/_satria_herman",
   resumeUrl: "/resume.pdf",
 };
 

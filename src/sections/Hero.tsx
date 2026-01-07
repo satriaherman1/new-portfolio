@@ -55,7 +55,7 @@ export default function Hero() {
 
             <div
                 ref={contentRef}
-                className="container max-w-6xl mx-auto px-6 py-20 md:py-32 relative z-10"
+                className="container max-w-6xl mx-auto px-6 pt-0 pb-20 md:py-32 relative z-10"
             >
                 <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-12">
                     <div className="max-w-2xl basis-full md:basis-[calc(60%-20px)]">

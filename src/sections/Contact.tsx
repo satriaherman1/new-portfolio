@@ -2,8 +2,8 @@ import { useRef, useEffect, type FormEvent, useState } from "react";
 import { gsap } from "gsap";
 import SectionWrapper from "../components/SectionWrapper";
 import { profile } from "../data/profile";
-import { FiGithub, FiLinkedin, FiTwitter, FiInstagram, FiSend, FiUser, FiMail, FiMessageSquare } from "react-icons/fi";
-import { FaVk, FaYoutube } from "react-icons/fa";
+import { FiGithub, FiLinkedin, FiInstagram, FiSend, FiUser, FiMail, FiMessageSquare } from "react-icons/fi";
+import { FaDev } from "react-icons/fa";
 import Button from "../components/Button";
 
 export default function Contact() {
@@ -42,10 +42,9 @@ export default function Contact() {
     const socialLinks = [
         { icon: <FiGithub size={22} />, href: profile.github, label: "GitHub", color: "hover:bg-gray-800" },
         { icon: <FiLinkedin size={22} />, href: profile.linkedin, label: "LinkedIn", color: "hover:bg-blue-600" },
-        { icon: <FiTwitter size={22} />, href: "#", label: "Twitter", color: "hover:bg-sky-500" },
+        { icon: <FaDev size={22} />, href: profile.devto, label: "Dev.to", color: "hover:bg-black dark:hover:bg-white dark:hover:text-black" },
         { icon: <FiInstagram size={22} />, href: "#", label: "Instagram", color: "hover:bg-pink-600" },
-        { icon: <FaVk size={22} />, href: "#", label: "VK", color: "hover:bg-blue-500" },
-        { icon: <FaYoutube size={22} />, href: "#", label: "YouTube", color: "hover:bg-red-600" },
+
     ];
 
     return (
@@ -105,13 +104,13 @@ export default function Contact() {
                     <form
                         ref={formRef}
                         onSubmit={handleSubmit}
-                        className="relative bg-white/80 dark:bg-neutral-900/80 backdrop-blur-xl p-8 md:p-10 rounded-[2rem] border border-white/20 dark:border-white/10 shadow-2xl"
+                        className="relative bg-white/80 dark:bg-neutral-800 backdrop-blur-xl p-8 md:p-10 rounded-[2rem] border border-white/20 dark:border-white/10 shadow-2xl"
                     >
                         <div className="flex items-center gap-3 mb-8">
                             <div className="w-3 h-3 rounded-full bg-red-500"></div>
                             <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                             <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                            <span className="ml-auto text-xs font-mono text-neutral-400">contact.tsx</span>
+                            <span className="ml-auto text-xs font-mono text-neutral-400">Mail</span>
                         </div>
 
                         <div className="space-y-6">
@@ -126,7 +125,7 @@ export default function Contact() {
                                     required
                                     onFocus={() => setFocusedField('name')}
                                     onBlur={() => setFocusedField(null)}
-                                    className="w-full pl-12 pr-4 py-4 rounded-xl bg-neutral-100 dark:bg-neutral-800/50 border-2 border-transparent focus:border-blue-500/50 focus:bg-white dark:focus:bg-neutral-800 text-neutral-900 dark:text-white outline-none transition-all duration-300 font-medium placeholder-neutral-400"
+                                    className="w-full pl-12 pr-4 py-4 rounded-xl bg-neutral-100 dark:bg-neutral-900/50 border-2 border-transparent focus:border-blue-500/50 focus:bg-white dark:focus:bg-neutral-900 text-neutral-900 dark:text-white outline-none transition-all duration-300 font-medium placeholder-neutral-400"
                                     placeholder="Your Name"
                                 />
                             </div>
@@ -142,7 +141,7 @@ export default function Contact() {
                                     required
                                     onFocus={() => setFocusedField('email')}
                                     onBlur={() => setFocusedField(null)}
-                                    className="w-full pl-12 pr-4 py-4 rounded-xl bg-neutral-100 dark:bg-neutral-800/50 border-2 border-transparent focus:border-blue-500/50 focus:bg-white dark:focus:bg-neutral-800 text-neutral-900 dark:text-white outline-none transition-all duration-300 font-medium placeholder-neutral-400"
+                                    className="w-full pl-12 pr-4 py-4 rounded-xl bg-neutral-100 dark:bg-neutral-900/50 border-2 border-transparent focus:border-blue-500/50 focus:bg-white dark:focus:bg-neutral-900 text-neutral-900 dark:text-white outline-none transition-all duration-300 font-medium placeholder-neutral-400"
                                     placeholder="email@example.com"
                                 />
                             </div>
@@ -158,7 +157,7 @@ export default function Contact() {
                                     required
                                     onFocus={() => setFocusedField('message')}
                                     onBlur={() => setFocusedField(null)}
-                                    className="w-full pl-12 pr-4 py-4 rounded-xl bg-neutral-100 dark:bg-neutral-800/50 border-2 border-transparent focus:border-blue-500/50 focus:bg-white dark:focus:bg-neutral-800 text-neutral-900 dark:text-white outline-none transition-all duration-300 font-medium placeholder-neutral-400 resize-none"
+                                    className="w-full pl-12 pr-4 py-4 rounded-xl bg-neutral-100 dark:bg-neutral-900/50 border-2 border-transparent focus:border-blue-500/50 focus:bg-white dark:focus:bg-neutral-900 text-neutral-900 dark:text-white outline-none transition-all duration-300 font-medium placeholder-neutral-400 resize-none"
                                     placeholder="Tell us about your project..."
                                 ></textarea>
                             </div>

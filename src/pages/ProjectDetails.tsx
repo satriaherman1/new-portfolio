@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import Button from "../components/Button";
 import { FaArrowLeft, FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
+import ReactMarkdown from "react-markdown";
+
 export default function ProjectDetails() {
     const { id } = useParams<{ id: string }>();
     const project = projects.find((p) => p.id === id);
@@ -41,6 +43,15 @@ export default function ProjectDetails() {
                 ))}
             </div>
 
+            {/* Project Image */}
+            <div className="mb-12 rounded-2xl overflow-hidden shadow-2xl border border-neutral-200 dark:border-neutral-800">
+                <img
+                    src={project.imageUrl}
+                    alt={project.title}
+                    className="w-full h-auto object-cover"
+                />
+            </div>
+
             <div className="grid md:grid-cols-3 gap-8 mb-12">
                 <div className="bg-neutral-50 dark:bg-neutral-800 p-6 rounded-xl">
                     <h3 className="font-semibold mb-2">Category</h3>
@@ -61,23 +72,23 @@ export default function ProjectDetails() {
             <div className="space-y-12">
                 <section>
                     <h2 className="text-2xl font-bold mb-4">The Challenge</h2>
-                    <p className="text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                        {project.problem}
-                    </p>
+                    <div className="prose dark:prose-invert max-w-none text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                        <ReactMarkdown>{project.problem}</ReactMarkdown>
+                    </div>
                 </section>
 
                 <section>
                     <h2 className="text-2xl font-bold mb-4">The Solution</h2>
-                    <p className="text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                        {project.solution}
-                    </p>
+                    <div className="prose dark:prose-invert max-w-none text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                        <ReactMarkdown>{project.solution}</ReactMarkdown>
+                    </div>
                 </section>
 
                 <section>
                     <h2 className="text-2xl font-bold mb-4">Impact</h2>
-                    <p className="text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                        {project.impact}
-                    </p>
+                    <div className="prose dark:prose-invert max-w-none text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                        <ReactMarkdown>{project.impact}</ReactMarkdown>
+                    </div>
                 </section>
             </div>
         </div>
