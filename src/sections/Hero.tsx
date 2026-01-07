@@ -7,6 +7,8 @@ import { FiMail } from "react-icons/fi";
 import Avatar from "../components/avatar";
 import { useTypewriterEffect } from "../hooks/useTypewriter";
 
+import BackgroundDecorations from "../components/BackgroundDecorations";
+
 export default function Hero() {
     const heroRef = useRef<HTMLElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
@@ -48,6 +50,7 @@ export default function Hero() {
             ref={heroRef}
             className="min-h-screen flex items-center pt-20 relative overflow-hidden bg-gradient-to-br from-indigo-50 via-white to-cyan-50 dark:from-neutral-900 dark:via-neutral-900 dark:to-neutral-800"
         >
+            <BackgroundDecorations />
             {/* Glassmorphism decorative elements */}
             <div className="absolute top-20 left-10 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob dark:bg-purple-900 dark:opacity-10"></div>
             <div className="absolute top-40 right-10 w-72 h-72 bg-cyan-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000 dark:bg-cyan-900 dark:opacity-10"></div>

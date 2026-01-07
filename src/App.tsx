@@ -7,7 +7,7 @@ import ChatWidget from './components/ChatWidget';
 
 function App() {
   return (
-    <main className="bg-white dark:bg-neutral-900 min-h-screen text-neutral-900 dark:text-white transition-colors duration-300">
+    <main className="bg-white dark:bg-neutral-900 min-h-screen text-neutral-900 dark:text-white transition-colors duration-300 relative">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />

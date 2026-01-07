@@ -7,6 +7,8 @@ import { projects } from "../data/projects";
 
 gsap.registerPlugin(ScrollTrigger);
 
+import BackgroundDecorations from "../components/BackgroundDecorations";
+
 export default function Projects() {
     const gridRef = useRef<HTMLDivElement>(null);
 
@@ -45,6 +47,7 @@ export default function Projects() {
             subtitle="Case studies of business systems I've designed and built."
             className="relative overflow-hidden"
         >
+            <BackgroundDecorations />
             {/* Dynamic Mesh Gradient Background */}
             <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-400/20 rounded-full mix-blend-multiply blur-[120px] opacity-30 animate-pulse -z-10"></div>
             <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-400/20 rounded-full mix-blend-multiply blur-[100px] opacity-30 animate-pulse delay-1000 -z-10"></div>

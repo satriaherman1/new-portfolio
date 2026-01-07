@@ -12,7 +12,7 @@ export default function ArchitectureCard({
 }: ArchitectureCardProps) {
     return (
         <article
-            className="bg-neutral-700 rounded-2xl p-8 border border-neutral-700 hover:border-neutral-600 transition-all duration-300"
+            className="bg-neutral-800 rounded-2xl p-8 border border-neutral-700 hover:border-neutral-600 transition-all duration-300"
             style={{ animationDelay: `${index * 100}ms` }}
         >
             <div className="flex items-center gap-4 mb-6">
