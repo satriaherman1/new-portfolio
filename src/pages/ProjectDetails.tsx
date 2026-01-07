@@ -1,4 +1,5 @@
 import { useParams, Link } from "react-router-dom";
+import SEO from "../components/SEO";
 import { projects } from "../data/projects";
 import { useEffect } from "react";
 import Button from "../components/Button";
@@ -27,6 +28,13 @@ export default function ProjectDetails() {
 
     return (
         <div className="min-h-screen pt-24 pb-20 px-6 max-w-4xl mx-auto">
+            <SEO
+                title={`${project.title} - Satria Herman`}
+                description={project.problem.slice(0, 150) + "..."}
+                image={project.imageUrl}
+                url={`https://satriaherman.com/project/${project.id}`}
+                type="article"
+            />
             <Link to="/" className="inline-flex items-center gap-2 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white mb-8 transition-colors">
                 <FaArrowLeft /> Back to Projects
             </Link>
