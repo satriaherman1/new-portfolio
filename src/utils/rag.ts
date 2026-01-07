@@ -60,7 +60,7 @@ experiences.forEach((e) => {
     type: "experience",
     title: `${e.role} at ${e.company}`,
     content: `${e.period}\n${e.description}\nHighlights:\n${e.highlights.map((h) => `- ${h}`).join("\n")}`,
-    tags: ["experience", "work", "job", "career", e.company.toLowerCase(), e.role.toLowerCase()],
+    tags: ["experience", "work", "job", "career", "company", "working", "employment", "history", e.company.toLowerCase(), e.role.toLowerCase()],
   });
 });
 
