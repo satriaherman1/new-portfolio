@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async';
+import { Title, Meta } from 'react-head';
 
 interface SEOProps {
     title?: string;
@@ -16,29 +16,25 @@ const SEO = ({
     type = "website"
 }: SEOProps) => {
     return (
-        <Helmet>
+        <>
             {/* Standard metadata tags */}
-            <title>{title}</title>
-            <meta name='description' content={description} />
-
-            {/* End standard metadata tags */}
+            <Title>{title}</Title>
+            <Meta name='description' content={description} />
 
             {/* Facebook tags */}
-            <meta property="og:type" content={type} />
-            <meta property="og:title" content={title} />
-            <meta property="og:description" content={description} />
-            <meta property="og:image" content={image} />
-            <meta property="og:url" content={url} />
-            {/* End Facebook tags */}
+            <Meta property="og:type" content={type} />
+            <Meta property="og:title" content={title} />
+            <Meta property="og:description" content={description} />
+            <Meta property="og:image" content={image} />
+            <Meta property="og:url" content={url} />
 
             {/* Twitter tags */}
-            <meta name="twitter:creator" content="@satriaherman" />
-            <meta name="twitter:card" content="summary_large_image" />
-            <meta name="twitter:title" content={title} />
-            <meta name="twitter:description" content={description} />
-            <meta name="twitter:image" content={image} />
-            {/* End Twitter tags */}
-        </Helmet>
+            <Meta name="twitter:creator" content="@satriaherman" />
+            <Meta name="twitter:card" content="summary_large_image" />
+            <Meta name="twitter:title" content={title} />
+            <Meta name="twitter:description" content={description} />
+            <Meta name="twitter:image" content={image} />
+        </>
     );
 }
 
