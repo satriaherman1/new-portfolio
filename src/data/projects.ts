@@ -7,6 +7,7 @@ export interface Project {
   impact: string;
   category: string;
   imageUrl: string;
+  client: string;
 }
 
 export const projects: Project[] = [
@@ -57,6 +58,7 @@ This allows administrators to:
 - Better data visibility and cross-department collaboration  `,
     category: "Enterprise System",
     imageUrl: "/images/power-one.jpeg",
+    client: "Systex Asia",
   },
   {
     id: "proj-2",
@@ -118,6 +120,7 @@ For me personally, this project was a major milestone:
 - I helped bring a complex AI product from **idea to production launch**  `,
     category: "Workflow Automation",
     imageUrl: "/images/realorfake.png",
+    client: "22222 Labs",
   },
   {
     id: "proj-3",
@@ -166,6 +169,7 @@ The project also proved how **good teamwork and communication** helped us delive
 `,
     category: "Ecommerce",
     imageUrl: "/images/volta.jpeg",
+    client: "Volta Indonesia",
   },
   {
     id: "proj-4",
@@ -219,5 +223,6 @@ With this system:
 This project demonstrates how automation can **directly improve business processes** and how technology can be used to solve real operational problems in recruitment.`,
     category: "Content Management",
     imageUrl: "/images/screeningboost.jpeg",
+    client: "22222 Labs",
   },
 ];

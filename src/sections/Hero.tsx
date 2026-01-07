@@ -89,7 +89,7 @@ export default function Hero() {
                                 onClick={scrollToContact}
                                 icon={<FiMail />}
                             >
-                                Contact Me
+                                Contact
                             </Button>
                         </div>
                     </div>
