@@ -133,7 +133,7 @@ export default function ChatWidget() {
                                     className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}
                                 >
                                     <div
-                                        className={`max-w-[80%] p-3 rounded-2xl text-sm leading-relaxed break-words overflow-x-auto ${msg.sender === "user"
+                                        className={`max-w-[80%] p-3 rounded-2xl text-sm leading-relaxed overflow-wrap-anywhere overflow-x-auto ${msg.sender === "user"
                                             ? "bg-blue-600 text-white rounded-br-none"
                                             : "bg-white dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-700 rounded-bl-none shadow-sm"
                                             }`}

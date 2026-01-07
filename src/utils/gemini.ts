@@ -1,9 +1,6 @@
 import { GoogleGenAI, type Content } from "@google/genai";
-import { profile, aboutContent } from "../data/profile";
-import { projects } from "../data/projects";
-import { skillCategories as skills } from "../data/skills";
-
-// ===================================
+import { profile } from "../data/profile";
+import { searchData } from "./rag";
 // 🔑 MULTI API KEY SETUP
 // ===================================
 const API_KEYS = (import.meta.env.VITE_GEMINI_API_KEYS || "")
@@ -67,47 +64,33 @@ let chatHistory: Content[] = [];
 const MAX_HISTORY = 20;
 
 // ===================================
-// 🧾 SYSTEM PROMPT
-// ===================================
-const SYSTEM_INSTRUCTION = `
-You are an AI assistant for the portfolio website of ${profile.name}, a ${profile.role}.
-your name is Antonio AI and
-Your role is to answer questions about ${profile.name}'s skills, experience, and projects.
-Be professional, friendly, and concise.
-
-Here is the context about ${profile.name}:
-
-PROFILE:
-${profile.tagline}
-Email: ${profile.email}
-LinkedIn: ${profile.linkedin}
-GitHub: ${profile.github}
-
-ABOUT:
-${aboutContent.paragraphs.join("\n")}
-Highlights: ${aboutContent.highlights.join(", ")}
-
-SKILLS:
-${skills
-  .map(cat => `${cat.title}: ${cat.skills.map(s => s.name).join(", ")}`)
-  .join("\n")}
-
-PROJECTS:
-${projects
-  .map(
-    p =>
-      `- ${p.title} (${p.category}): ${p.problem} Solution: ${p.solution} Tech: ${p.techStack.join(", ")}`
-  )
-  .join("\n")}
-
-If asked about something not in this context, politely say you don't have that information but suggest contacting ${profile.name} directly via email.
-`;
-
-// ===================================
 // 💬 NORMAL CHAT
 // ===================================
 export async function getChatResponse(message: string) {
   try {
+    // 1. Retrieve relevant context
+    const retrievedContext = searchData(message);
+    
+    // 2. Construct System Instruction with Context
+    const systemInstruction = `
+You are an AI assistant for the portfolio website of ${profile.name}, a ${profile.role}.
+Your name is Antonio AI.
+Your role is to answer questions about ${profile.name}'s skills, experience, and projects.
+Be professional, friendly, and concise.
+
+${retrievedContext ? `
+Here is some relevant information found in ${profile.name}'s portfolio based on the user's query:
+
+${retrievedContext}
+
+Use this information to answer the question accurately.
+` : `
+I don't have specific information in my knowledge base about this exact query, so answer generally based on your knowledge of ${profile.name} as a Software Engineer, or politely decline if it's completely unrelated.
+`}
+
+If the user asks about something clearly outside the scope of ${profile.name}'s professional work, politely redirect them.
+    `;
+
     chatHistory.push({ role: "user", parts: [{ text: message }] });
 
     if (chatHistory.length > MAX_HISTORY) {
@@ -117,12 +100,12 @@ export async function getChatResponse(message: string) {
     const response = await callWithFailover(() =>
       client.models.generateContent({
         model: "gemini-2.5-flash",
-        config: { systemInstruction: SYSTEM_INSTRUCTION },
+        config: { systemInstruction: systemInstruction.trim() },
         contents: chatHistory,
       })
     );
 
-    const text = response.text;
+    const text = response.text || "I didn't get a response. Please try again.";
 
     chatHistory.push({ role: "model", parts: [{ text }] });
 
@@ -138,6 +121,29 @@ export async function getChatResponse(message: string) {
 // ===================================
 export async function* getChatResponseStream(message: string): AsyncGenerator<string, void, unknown> {
   try {
+    // 1. Retrieve relevant context
+    const retrievedContext = searchData(message);
+
+    // 2. Construct System Instruction with Context
+    const systemInstruction = `
+You are an AI assistant for the portfolio website of ${profile.name}, a ${profile.role}.
+Your name is Antonio AI.
+Your role is to answer questions about ${profile.name}'s skills, experience, and projects.
+Be professional, friendly, and concise.
+
+${retrievedContext ? `
+Here is some relevant information found in ${profile.name}'s portfolio based on the user's query:
+
+${retrievedContext}
+
+Use this information to answer the question accurately.
+` : `
+I don't have specific information in my knowledge base about this exact query, so answer generally based on your knowledge of ${profile.name} as a Software Engineer, or politely decline if it's completely unrelated.
+`}
+
+If the user asks about something clearly outside the scope of ${profile.name}'s professional work, politely redirect them.
+    `;
+
     chatHistory.push({ role: "user", parts: [{ text: message }] });
 
     if (chatHistory.length > MAX_HISTORY) {
@@ -147,7 +153,7 @@ export async function* getChatResponseStream(message: string): AsyncGenerator<st
     const result = await callWithFailover(() =>
       client.models.generateContentStream({
         model: "gemini-2.5-flash",
-        config: { systemInstruction: SYSTEM_INSTRUCTION },
+        config: { systemInstruction: systemInstruction.trim() },
         contents: chatHistory,
       })
     );
