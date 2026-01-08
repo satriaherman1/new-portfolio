@@ -126,10 +126,12 @@ export async function* getChatResponseStream(message: string): AsyncGenerator<st
 
     // 2. Construct System Instruction with Context
     const systemInstruction = `
-You are an AI assistant for the portfolio website of ${profile.name}, a ${profile.role}.
-Your name is Antonio AI.
-Your role is to answer questions about ${profile.name}'s skills, experience, and projects.
-Be professional, friendly, and concise.
+You are Antonio AI, the personal assistant on ${profile.name}'s portfolio website.
+
+Your job is to help visitors get to know ${profile.name} — what they do, what they’re good at, and what they’ve built.
+
+Answer questions in a friendly, clear, and helpful way. Keep things professional, but relaxed and easy to understand.
+
 
 ${retrievedContext ? `
 Here is some relevant information found in ${profile.name}'s portfolio based on the user's query:
@@ -173,7 +175,7 @@ If the user asks about something clearly outside the scope of ${profile.name}'s 
 
   } catch (error) {
     console.error("Gemini Chat Stream Error:", error);
-    yield "Sorry, I'm having trouble connecting to the AI right now. Please try again later.";
+    yield "Sorry, I cannot answer your question right now. Please try again later.";
   }
 }
 
